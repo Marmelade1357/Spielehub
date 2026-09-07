@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Spieleabend</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%B2%3C/text%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #100b1e;
+    --panel: #1b1330;
+    --border: #382a55;
+    --text: #ece7f6;
+    --text-dim: #a99bc9;
+    --gold: #f4c95d;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; min-height: 100%;
+    background: radial-gradient(circle at top, #241a40 0%, var(--bg) 62%);
+    color: var(--text);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .wrap { max-width: 720px; width: 100%; padding: 32px 18px; text-align: center; }
+  h1 { font-size: 2.2rem; margin: 0 0 6px; text-shadow: 0 0 18px rgba(124,77,255,0.6); }
+  p.subtitle { color: var(--text-dim); margin: 0 0 34px; }
+  .cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .game-card {
+    flex: 1 1 260px;
+    max-width: 300px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 22px;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+  }
+  .game-card:hover { transform: translateY(-4px); filter: brightness(1.12); }
+  .game-card .icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+  .game-card h2 { margin: 0 0 8px; font-size: 1.3rem; }
+  .game-card p { margin: 0; color: var(--text-dim); font-size: 0.9rem; }
+  .game-card.widerstand { border-color: #5a2a2a; }
+  .game-card.wizard { border-color: var(--gold); }
+  footer { margin-top: 34px; color: var(--text-dim); font-size: 0.78rem; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🎲 Spieleabend</h1>
+    <p class="subtitle">Welches Spiel wollt ihr spielen?</p>
+    <div class="cards">
+      <a class="game-card widerstand" href="/widerstand/">
+        <span class="icon">🕵️</span>
+        <h2>Der Widerstand</h2>
+        <p>Geheime Rollen, Teams vorschlagen, Missionen sabotieren. 5–10 Spieler.</p>
+      </a>
+      <a class="game-card wizard" href="/wizard/">
+        <span class="icon">🧙</span>
+        <h2>Wizard</h2>
+        <p>Sag genau vorher, wie viele Stiche du machst. 3–6 Spieler.</p>
+      </a>
+    </div>
+    <footer>Ein Gerät pro Person – einfach den Link mit Freunden teilen.</footer>
+  </div>
+</body>
+</html>

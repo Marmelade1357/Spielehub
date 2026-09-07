@@ -1,0 +1,13 @@
+name: spielehub
+
+services:
+  app:
+    build: .
+    network_mode: host
+    # network_mode: host statt ports-Mapping, weil dieser Container die Ports
+    # der anderen beiden Spiele-Container auf demselben Pi über 127.0.0.1
+    # erreichen muss (127.0.0.1:8092 = Widerstand, 127.0.0.1:8093 = Wizard) -
+    # das geht mit normalem Bridge-Networking nicht, da 127.0.0.1 dort auf den
+    # Container selbst zeigt, nicht auf den Host. Der eigene Port 8094 kommt
+    # dadurch direkt aus nginx.conf (kein "ports:" nötig).
+    restart: unless-stopped
