@@ -8,8 +8,9 @@
 # Aufruf (im Projektordner, z.B. ~/spielehub):
 #   ./deploy.sh
 #
-# Wichtig: Widerstand und Wizard müssen bereits laufen (127.0.0.1:8092 bzw.
-# 127.0.0.1:8093), sonst zeigt der Hub für die jeweilige Kachel einen Fehler.
+# Wichtig: Widerstand, Wizard und Bluff müssen bereits laufen (127.0.0.1:8092,
+# 127.0.0.1:8093 bzw. 127.0.0.1:8095), sonst zeigt der Hub für die jeweilige
+# Kachel einen Fehler.
 
 set -e  # bei jedem Fehler sofort abbrechen
 
