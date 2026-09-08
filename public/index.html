@@ -8,60 +8,107 @@
 <style>
   :root {
     --bg: #100b1e;
-    --panel: #1b1330;
-    --border: #382a55;
+    --bg-alt: #180f2b;
+    --panel: #1e1436;
+    --border: #3a2b5c;
     --text: #ece7f6;
     --text-dim: #a99bc9;
-    --gold: #f4c95d;
+    --radius: 14px;
   }
   * { box-sizing: border-box; }
   html, body {
-    margin: 0; padding: 0; min-height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
     background: radial-gradient(circle at top, #241a40 0%, var(--bg) 62%);
     color: var(--text);
     font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .wrap { max-width: 720px; width: 100%; padding: 32px 18px; text-align: center; }
-  h1 { font-size: 2.2rem; margin: 0 0 6px; text-shadow: 0 0 18px rgba(124,77,255,0.6); }
-  p.subtitle { color: var(--text-dim); margin: 0 0 34px; }
-  .cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-  .game-card {
-    flex: 1 1 260px;
-    max-width: 300px;
+
+  .hub-card {
     background: var(--panel);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 30px 22px;
+    border-radius: var(--radius);
+    padding: 34px 30px;
+    width: 100%;
+    max-width: 760px;
+    margin: 24px 14px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0 0 6px;
+    font-size: 2.1rem;
+    text-shadow: 0 0 18px rgba(124,77,255,0.6);
+  }
+  .subtitle { color: var(--text-dim); margin: 0 0 30px; }
+
+  .games { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+  .game-tile {
+    flex: 1 1 260px;
+    max-width: 320px;
+    background: var(--bg-alt);
+    border: 1px solid var(--tile-border);
+    border-radius: 12px;
+    padding: 26px 22px 22px;
     text-decoration: none;
     color: var(--text);
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     transition: transform 0.15s ease, filter 0.15s ease;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   }
-  .game-card:hover { transform: translateY(-4px); filter: brightness(1.12); }
-  .game-card .icon { font-size: 3rem; display: block; margin-bottom: 12px; }
-  .game-card h2 { margin: 0 0 8px; font-size: 1.3rem; }
-  .game-card p { margin: 0; color: var(--text-dim); font-size: 0.9rem; }
-  .game-card.widerstand { border-color: #5a2a2a; }
-  .game-card.wizard { border-color: var(--gold); }
-  footer { margin-top: 34px; color: var(--text-dim); font-size: 0.78rem; }
+  .game-tile:hover { transform: translateY(-4px); filter: brightness(1.1); }
+  .game-tile .icon {
+    font-size: 2.6rem;
+    display: block;
+    margin-bottom: 10px;
+    text-shadow: 0 0 14px var(--tile-glow);
+  }
+  .game-tile h2 { margin: 0 0 8px; font-size: 1.25rem; }
+  .game-tile p { margin: 0 0 20px; color: var(--text-dim); font-size: 0.88rem; line-height: 1.4; flex-grow: 1; }
+
+  .play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: white;
+    background: var(--tile-btn);
+  }
+
+  .game-tile.widerstand { --tile-border: #5a2a2a; --tile-glow: rgba(231,76,60,0.55); --tile-btn: linear-gradient(135deg, #e74c3c, #c0392b); }
+  .game-tile.wizard { --tile-border: #6b4a1f; --tile-glow: rgba(124,77,255,0.55); --tile-btn: linear-gradient(135deg, #7c4dff, #5a2fe0); }
+
+  footer { margin-top: 30px; color: var(--text-dim); font-size: 0.78rem; }
 </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="hub-card">
     <h1>🎲 Spieleabend</h1>
     <p class="subtitle">Welches Spiel wollt ihr spielen?</p>
-    <div class="cards">
-      <a class="game-card widerstand" href="/widerstand/">
+    <div class="games">
+      <a class="game-tile widerstand" href="/widerstand/">
         <span class="icon">🕵️</span>
         <h2>Der Widerstand</h2>
         <p>Geheime Rollen, Teams vorschlagen, Missionen sabotieren. 5–10 Spieler.</p>
+        <span class="play-btn">Spielen</span>
       </a>
-      <a class="game-card wizard" href="/wizard/">
+      <a class="game-tile wizard" href="/wizard/">
         <span class="icon">🧙</span>
         <h2>Wizard</h2>
         <p>Sag genau vorher, wie viele Stiche du machst. 3–6 Spieler.</p>
+        <span class="play-btn">Spielen</span>
       </a>
     </div>
     <footer>Ein Gerät pro Person – einfach den Link mit Freunden teilen.</footer>
