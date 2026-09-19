@@ -8,6 +8,7 @@ Eine einzige Landingpage (`games.oualid.de`) mit Kacheln, die zu den eigenständ
 - **🗿 Tempel des Schreckens** → `/tempel/` → proxied zu `127.0.0.1:8096` (eigener Container, siehe `../TempelDesSchreckens`)
 - **♠️ Poker** → `/poker/` → proxied zu `127.0.0.1:8097` (eigener Container, siehe `../Poker`)
 - **🚪 Munchkin** → `/munchkin/` → proxied zu `127.0.0.1:8098` (eigener Container, siehe `../Munchkin`)
+- **🎩 Monopoly (Entenhausen)** → `/monopoly/` → proxied zu `127.0.0.1:8099` (eigener Container, siehe `../Monopoly`)
 
 So muss nur eine Subdomain/Adresse eingerichtet und geteilt werden, obwohl alle Spiele technisch komplett unabhängige Node-Server bleiben (eigene Docker-Container, eigenes Deployment, eigene Tests) - der Hub ist nur ein schlanker nginx-Reverse-Proxy plus die statische Startseite.
 
@@ -23,7 +24,7 @@ Damit das funktioniert, mussten alle Spiele minimal angepasst werden: Der Socket
 
 ## Voraussetzung
 
-Widerstand, Wizard, Bluff, Tempel des Schreckens, Poker und Munchkin müssen als eigene Container bereits laufen (`127.0.0.1:8092`, `8093`, `8095`, `8096`, `8097` bzw. `8098`), bevor der Hub gestartet wird - er leitet nur weiter, hostet die Spiele nicht selbst.
+Widerstand, Wizard, Bluff, Tempel des Schreckens, Poker, Munchkin und Monopoly müssen als eigene Container bereits laufen (`127.0.0.1:8092`, `8093`, `8095`, `8096`, `8097`, `8098` bzw. `8099`), bevor der Hub gestartet wird - er leitet nur weiter, hostet die Spiele nicht selbst.
 
 ## Deployment (Raspberry Pi)
 
