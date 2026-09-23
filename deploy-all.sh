@@ -17,7 +17,7 @@ SELF="$(cd "$(dirname "$0")" && pwd)"
 if [ -n "$BASE" ]; then ROOTS="$BASE"; else ROOTS="$SELF $SELF/.. $SELF/../.."; fi
 
 # Reihenfolge: Spiele zuerst, Hub zuletzt (er braucht die anderen als Ziele).
-ALL="bluff poker wizard widerstand tempeldesschreckens munchkin monopoly unonomercy dereisernethron spielehub"
+ALL="bluff poker wizard widerstand tempeldesschreckens munchkin monopoly unonomercy dereisernethron liarsdice spielehub"
 WANT="${*:-$ALL}"
 
 ok=(); failed=(); missing=()

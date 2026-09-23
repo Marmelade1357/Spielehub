@@ -11,6 +11,7 @@ Eine einzige Landingpage (`games.oualid.de`) mit Kacheln, die zu den eigenständ
 - **🎩 Monopoly (Entenhausen)** → `/monopoly/` → proxied zu `127.0.0.1:8099` (eigener Container, siehe `../Monopoly`)
 - **🔥 Uno No Mercy** → `/uno/` → proxied zu `127.0.0.1:8100` (eigener Container, siehe `../UnoNoMercy`)
 - **👑 Der Eiserne Thron** → `/thron/` → proxied zu `127.0.0.1:8101` (eigener Container, siehe `../DerEiserneThron`)
+- **☠️ Liar's Dice** → `/liarsdice/` → proxied zu `127.0.0.1:8102` (eigener Container, siehe `../LiarsDice`)
 
 So muss nur eine Subdomain/Adresse eingerichtet und geteilt werden, obwohl alle Spiele technisch komplett unabhängige Node-Server bleiben (eigene Docker-Container, eigenes Deployment, eigene Tests) - der Hub ist nur ein schlanker nginx-Reverse-Proxy plus die statische Startseite.
 
@@ -19,14 +20,14 @@ So muss nur eine Subdomain/Adresse eingerichtet und geteilt werden, obwohl alle 
 nginx terminiert auf Port 8094 (per `network_mode: host`, damit `127.0.0.1:8092`-`8098` der anderen Container erreichbar sind) und:
 
 1. liefert unter `/` die statische Startseite (`public/index.html`) aus,
-2. leitet alles unter `/widerstand/*`, `/wizard/*`, `/bluff/*`, `/tempel/*`, `/poker/*` bzw. `/munchkin/*`, `/monopoly/*` bzw. `/uno/*` bzw. `/thron/*` an den jeweiligen Container weiter (inkl. WebSocket-Upgrade für Socket.IO),
+2. leitet alles unter `/widerstand/*`, `/wizard/*`, `/bluff/*`, `/tempel/*`, `/poker/*` bzw. `/munchkin/*`, `/monopoly/*` bzw. `/uno/*` bzw. `/thron/*` bzw. `/liarsdice/*` an den jeweiligen Container weiter (inkl. WebSocket-Upgrade für Socket.IO),
 3. schneidet dabei jeweils das Präfix ab, bevor die Anfrage beim jeweiligen Spiel-Server ankommt - die Spiele "wissen" also gar nichts von diesem Hub.
 
 Damit das funktioniert, mussten alle Spiele minimal angepasst werden: Der Socket.IO-Client (`public/client.js`) ermittelt jeweils automatisch aus der aktuellen Browser-URL, unter welchem Pfad-Präfix er gerade läuft, und verbindet sich entsprechend. Bei direktem Zugriff (z. B. weiterhin `wd.oualid.de` ohne Hub) ist das Präfix leer und es ändert sich nichts am bisherigen Verhalten - alle Zugriffswege funktionieren parallel.
 
 ## Voraussetzung
 
-Widerstand, Wizard, Bluff, Tempel des Schreckens, Poker, Munchkin, Monopoly, Uno No Mercy und Der Eiserne Thron müssen als eigene Container bereits laufen (`127.0.0.1:8092`, `8093`, `8095`, `8096`, `8097`, `8098`, `8099`, `8100` bzw. `8101`), bevor der Hub gestartet wird - er leitet nur weiter, hostet die Spiele nicht selbst.
+Widerstand, Wizard, Bluff, Tempel des Schreckens, Poker, Munchkin, Monopoly, Uno No Mercy, Der Eiserne Thron und Liar's Dice müssen als eigene Container bereits laufen (`127.0.0.1:8092`, `8093`, `8095`, `8096`, `8097`, `8098`, `8099`, `8100`, `8101` bzw. `8102`), bevor der Hub gestartet wird - er leitet nur weiter, hostet die Spiele nicht selbst.
 
 ## Deployment (Raspberry Pi)
 
